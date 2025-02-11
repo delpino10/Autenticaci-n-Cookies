@@ -1,5 +1,6 @@
 package jadelpino.autenticacionconcookies.controller;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,20 +24,21 @@ public class PrincipalController {
     }
 
 
-
         @GetMapping("/login")
-        public String userPage(Model model) {
+        public String paginaInicio(Model model) {
         return "user";
     }
 
         @PostMapping("/check-usuario")
-        public String submitUser(@RequestParam("usuario") String usuario, Model model) {
+        public String checkUsuario(@RequestParam("usuario") String usuario, Model model, HttpSession session) {
         model.addAttribute("usuario", usuario);
             if (!usuarios.containsKey(usuario)) {
                 model.addAttribute("error", "El nombre del usuario " + usuario + " no es correcto");
                 return "user";
             }
+        session.setAttribute("usuario", usuario);
         return "redirect:/contrasenia?usuario=" + usuario;
+
     }
 
         @GetMapping("/contrasenia")
@@ -45,17 +47,18 @@ public class PrincipalController {
         return "password";
     }
 
-        @PostMapping("/updatePassword")
+        @PostMapping("/check-password")
         public String updatePassword(
-                @RequestParam(value = "usuario", required = false) String usuario,
-                @PathVariable
             @RequestParam("contrasenia") String password,
+            HttpSession session,
             Model model) {
 
+            // Obtener el usuario de la sesión
+            String usuario = (String) session.getAttribute("usuario");
             if (usuarios.containsKey(usuario) && password.equals(usuarios.get(usuario))) {
                 return "areaPersonal";
             }
-            model.addAttribute("error", "El la contraseña no es correcta");
+            model.addAttribute("error", "El la contraseña "+ usuario +" no es correcta");
             return "password";
     }
 
