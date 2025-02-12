@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Área Personal</title>
 </head>
 <body>
-    <h1>Bienvenido a tu área Personal</h1>
+    <h1 th:text="${usuario}"/>
+    <h2>Estás en tu Área Personal </h2>
+    <p>Te has conectado <span th:text="${contador}"/> veces desde ese navegador </p>
+    <!--<a th:href="@{/user}">Desconectar</a>-->
 </body>
 </html>
