@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Área Personal</title>
+    <link rel="stylesheet" th:href="@{/css/estilosUser.css}">
 </head>
 <body>
-    <h1 th:text="${usuario}"/>
+<div class="container">
+    <h1 th:text="${usuario}"></h1>
     <h2>Estás en tu Área Personal </h2>
-    <p>Te has conectado <span th:text="${contador}"/> veces desde ese navegador </p>
-    <!--<a th:href="@{/user}">Desconectar</a>-->
+    <p>Te has conectado <strong><span th:text="${contador}"></span></strong> veces
+        desde ese navegador <code th:text="${navegador}"></code>
+        <span><code th:text="${renderizado}"></code></span>
+    </p>
+</div>
 </body>
 </html>

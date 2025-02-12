@@ -1,0 +1,97 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Contenedor principal */
+.container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Título */
+h1 {
+    font-size: 1.8rem;
+    color: #7f4caf;
+    margin-bottom: 20px;
+}
+
+/* Estilos del formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Campo de texto para la contraseña */
+input[type="password"] {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+input[type="password"]:focus {
+    border: 1px solid #4caf50;
+}
+
+/* Checkbox para ver la contraseña */
+input[type="checkbox"] {
+    margin-top: 10px;
+}
+
+/* Estilo del label para el checkbox */
+label[for="checkbox"] {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Botón de envío */
+button {
+    padding: 12px;
+    background-color: #7f4caf;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #9b6acc;
+}
+
+/* Estilo de mensaje de error */
+p {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+p[style="color:red;"] {
+    color: #e53935;
+}
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+}

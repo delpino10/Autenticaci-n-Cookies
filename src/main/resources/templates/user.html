@@ -2,16 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Página de Usuario</title>
+    <link rel="stylesheet" th:href="@{/css/estilosUser.css}">
 </head>
 <body>
-<h1>Bienvenido, Usuario</h1>
-<!-- Formulario para introducir el nombre de usuario -->
-<!-- Muestra mensaje de error si no existe -->
-<p style="color:red;" th:if="${error}" th:text="${error}"></p>
-<form action="/check-usuario" method="post">
-    <label for="usuario">Nombre de Usuario:</label>
-    <input type="text" id="usuario" name="usuario" autofocus>
-    <button type="submit">Enviar</button>
-</form>
+<div class="container">
+    <h1>LOGIN</h1>
+    <!-- Muestra mensaje de error si no existe -->
+    <p style="color:red;" th:if="${error}" th:text="${error}"></p>
+    <form action="/check-usuario" method="post">
+        <label for="usuario">Nombre de Usuario:</label>
+        <input type="text" id="usuario" name="usuario" autofocus>
+        <button type="submit">Acceder</button>
+    </form>
+</div>
 </body>
 </html>
+
