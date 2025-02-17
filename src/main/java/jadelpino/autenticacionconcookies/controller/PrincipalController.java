@@ -31,13 +31,12 @@ public class PrincipalController {
     }
 
         @PostMapping("/check-usuario")
-        public String checkUsuario(@RequestParam("usuario") String usuario, Model model, HttpSession session) {
+        public String checkUsuario(@RequestParam("usuario") String usuario, Model model) {
         model.addAttribute("usuario", usuario);
             if (!usuarios.containsKey(usuario)) {
                 model.addAttribute("error", "El nombre del usuario " + usuario + " no es correcto");
                 return "user";
             }
-        session.setAttribute("usuario", usuario);
         return "redirect:/contrasenia?usuario=" + usuario;
 
     }
@@ -51,13 +50,13 @@ public class PrincipalController {
         @PostMapping("/check-password")
         public String updatePassword(
             @RequestParam("contrasenia") String password,
-            HttpSession session,
+            // Campo usuario entre vistas a través de un input=hidden
+            @RequestParam("usuario") String usuario,
             HttpServletResponse response,
             HttpServletRequest request,
             Model model) {
 
-            // Obtener el usuario de la sesión
-            String usuario = (String) session.getAttribute("usuario");
+
             int contador = 0;
             // Si el usuario y la contraseña coinciden
             if (usuarios.containsKey(usuario) && password.equals(usuarios.get(usuario))) {
